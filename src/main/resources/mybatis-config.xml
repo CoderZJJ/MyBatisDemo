@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 驼峰式名命字段 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 开启二级缓存,默认为true -->
+        <setting name="cacheEnabled" value="true"/>
+	</settings>
+	
+	<!-- 多数据库支持
+	<databaseIdProvider type="DB_VENDOR">
+		<property name="Oracle" value="oracle"/>
+		<property name="MySQL" value="mysql"/>
+	</databaseIdProvider> -->
+	
+	<typeAliases>
+		<package name="cc.zhou.model"/>
+	</typeAliases>
+	
+	<typeHandlers>
+		<typeHandler javaType="cc.zhou.type.Enabled" handler="cc.zhou.type.EnabledTypeHandler" />
+	</typeHandlers>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC">
+				<property name="" value=""/>
+			</transactionManager>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+				<property name="username" value="root"/>
+				<property name="password" value="123456"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<!-- <mapper resource="mapper/CountryMapper.xml"/>
+		<mapper resource="mapper/UserMapper.xml"/>
+		<mapper resource="mapper/UserRoleMapper.xml"/> -->
+		<!-- 查找包下所有接口 -->
+		<package name="cc.zhou.mapper"/>
+	</mappers>
+</configuration>
